@@ -29,17 +29,17 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  // const authorizationHeader = (authHeader = req.get('authorization'));
-  // var scopes = [];
+  set locals, only providing error in development
+  const authorizationHeader = (authHeader = req.get('authorization'));
+  var scopes = [];
 
-  // if (authorizationHeader != null) {
-  //   token = jwt.decode(authorizationHeader.replace('Bearer ', ''), {
-  //     complete: true,
-  //     json: true
-  //   });
-  // }
-  // scopes = token.payload.scope;
+  if (authorizationHeader != null) {
+    token = jwt.decode(authorizationHeader.replace('Bearer ', ''), {
+      complete: true,
+      json: true
+    });
+  }
+  scopes = token.payload.scope;
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   res.locals.message = err.message;
